@@ -1,33 +1,31 @@
+document.addEventListener("DOMContentLoaded", (event) => {
+    //accordion
+    const items = document.querySelectorAll(".accordion button");
 
-//accordion
-const items = document.querySelectorAll(".accordion button");
+    function toggleAccordion() {
+        const itemToggle = this.getAttribute('aria-expanded');
 
-function toggleAccordion() {
-    const itemToggle = this.getAttribute('aria-expanded');
+        items.forEach((item) => {
+            item.setAttribute('aria-expanded', 'false');
+        });
 
-    for (i = 0; i < items.length; i++) {
-        items[i].setAttribute('aria-expanded', 'false');
+        if (itemToggle == 'false') {
+            this.setAttribute('aria-expanded', 'true');
+        }
     }
 
-    if (itemToggle == 'false') {
-        this.setAttribute('aria-expanded', 'true');
-    }
-}
+    items.forEach(item => item.addEventListener('click', toggleAccordion));
 
-items.forEach(item => item.addEventListener('click', toggleAccordion));
-
-//tabs
-(function () {
+    //tabs
     const tabControls = document.querySelector('.tab-controls')
 
     tabControls.addEventListener('click', toggleTab)
 
     function toggleTab(e) {
-
+        
         const tabContol = e.target.closest('.tab-controls__link')
-
-        if (!tabContol) return
         e.preventDefault()
+        if (!tabContol) return
         if (tabContol.classList.contains('tab-controls__link--active')) return
 
 
@@ -49,14 +47,13 @@ items.forEach(item => item.addEventListener('click', toggleAccordion));
 
     }
 
-
     //  Модалка
 
     const modal = document.querySelector('.modal')
     const modalButton = document.querySelectorAll('.card__button')
-    
+
     modal.addEventListener('click', closeModal)
-    
+
     modalButton.forEach((button) => {
         button.addEventListener("click", openModal);
     });
@@ -66,13 +63,16 @@ items.forEach(item => item.addEventListener('click', toggleAccordion));
     }
 
     function closeModal(e) {
-        
-
         const target = e.target
 
         if (target.closest('.modal__cancel') || target.classList.contains('modal')) {
             document.body.classList.remove('body--opened-modal')
         }
-
     }
-})()
+
+});
+
+
+
+
+
