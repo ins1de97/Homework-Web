@@ -1,4 +1,22 @@
 document.addEventListener("DOMContentLoaded", (event) => {
+    //  Бургер
+    document.addEventListener('click', burgerUnit)
+
+    function burgerUnit(e) {
+
+        const burgerUnit = e.target.closest('.burger-icon')
+        const burgerNavLink = e.target.closest('.nav__link')
+
+        if (!burgerUnit && !burgerNavLink) return
+        if (document.documentElement.clientWidth > 900) return
+
+        if (!document.body.classList.contains('body--opened-menu')) {
+            document.body.classList.add('body--opened-menu')
+        } else {
+            document.body.classList.remove('body--opened-menu')
+        }
+    }
+
     //accordion
     const items = document.querySelectorAll(".accordion button");
 
@@ -22,7 +40,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     tabControls.addEventListener('click', toggleTab)
 
     function toggleTab(e) {
-        
+
         const tabContol = e.target.closest('.tab-controls__link')
         e.preventDefault()
         if (!tabContol) return
