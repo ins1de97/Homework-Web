@@ -666,6 +666,7 @@ body {
 }
 
 .modal__img {
+    max-width: 100%;
     border-radius: 4px;
     margin-bottom: 32px;
 }
