@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
     }
 
-    //accordion
+    // Аккардион
     const items = document.querySelectorAll(".accordion button");
 
     function toggleAccordion() {
@@ -34,7 +34,25 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     items.forEach(item => item.addEventListener('click', toggleAccordion));
 
-    //tabs
+    // Форма
+
+    const formElement = document.querySelector('.contact__form');
+    if (!formElement) {
+        console.error('Форма не найдена');
+        return;
+    }
+
+    formElement.addEventListener('submit', (event) => {
+        event.preventDefault()
+
+        const formData = new FormData(formElement)
+
+        console.log( Object.fromEntries(formData) )
+
+        formElement.reset()
+    })
+
+    // Табы
     const tabControls = document.querySelector('.tab-controls')
 
     tabControls.addEventListener('click', toggleTab)

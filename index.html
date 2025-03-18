@@ -251,12 +251,12 @@
                             <h2 class="contact__title title">
                                 Свяжись со мной
                             </h2>
-                            <form class="contact__form">
+                            <form class="contact__form" action="/registration" method="post">
                                 <div class="contact__field">
-                                    <input type="email" class="contact__input" placeholder="Email" required>
-                                    <input type="text" class="contact__input" placeholder="Имя" required>
+                                    <input type="email" class="contact__input" placeholder="Email" name="Email" required>
+                                    <input type="text" class="contact__input" placeholder="Имя" name="Name" required>
                                 </div>
-                                <textarea class="contact__message" placeholder="Сообщение"></textarea>
+                                <textarea class="contact__message" placeholder="Сообщение" name="Message"></textarea>
                                 <button class="contact__button button" type="submit">
                                     Связаться
                                 </button>
